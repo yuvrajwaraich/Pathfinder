@@ -246,31 +246,3 @@ class Algorithms():
                     toAddto.insert(a + 1, elem)
                 return
         toAddto.append(elem)
-
-    def toString(self):
-        array = [["" for x in range(self.numCol)] for y in range(self.numRow)]
-        info, pathInfo, pathCoord = "", "", ""
-        temp = None
-
-        if self.finalPath != None:
-            pathCoord = "Path from start to finish:\n"
-
-            while not self.finalPath.isEmpty():
-                temp = self.finalPath.pop().getData()
-
-                if temp.getType() == "PATH":
-                    array[temp.getRow()][temp.getCol()] = "*"
-                    pathCoord += temp.toString() + "\n"
-
-            for x in range(self.numRow):
-                for y in range(self.numCol):
-                    if array[x][y] == "":
-                        array[x][y] = self.board[x][y].getTypeString()
-                    pathInfo += array[x][y]
-                pathInfo += "\n"
-
-            info = pathInfo + pathCoord + "\n"
-        elif self.finalPath == None:
-            info = "Path not found."
-
-        return info
